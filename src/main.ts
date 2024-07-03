@@ -57,9 +57,25 @@ gui
   .step(100)
   .onChange((value) => {
     initMesh(scene, guiOptions.method, value);
+    if (guiOptions.method === Method.BATCHED) {
+      scene.traverse((object: any) => {
+        if ((object as BatchedMesh).isBatchedMesh) {
+          object.sortObjects = guiOptions.sortObjects;
+          object.perObjectFrustumCulled = guiOptions.perObjectFrustumCulled;
+        }
+      });
+    }
   });
 gui.add(guiOptions, 'method', Method).onChange((value) => {
   initMesh(scene, value, guiOptions.count);
+  if (guiOptions.method === Method.BATCHED) {
+    scene.traverse((object: any) => {
+      if ((object as BatchedMesh).isBatchedMesh) {
+        object.sortObjects = guiOptions.sortObjects;
+        object.perObjectFrustumCulled = guiOptions.perObjectFrustumCulled;
+      }
+    });
+  }
 });
 gui.add(guiOptions, 'sortObjects').onChange((value) => {
   scene.traverse((object: any) => {

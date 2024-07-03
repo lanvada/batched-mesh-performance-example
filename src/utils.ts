@@ -65,10 +65,7 @@ function initGeometries(): BufferGeometry[] {
   ];
 }
 
-function initBatchedMesh(
-  geometries: BufferGeometry[],
-  totalCount: number,
-) {
+function initBatchedMesh(geometries: BufferGeometry[], totalCount: number) {
   const geometryCount = totalCount;
   const vertexCount = geometries.length * 512;
   const indexCount = geometries.length * 1024;
@@ -98,10 +95,7 @@ function initBatchedMesh(
   return mesh;
 }
 
-function initMergedMesh(
-  geometries: BufferGeometry[],
-  totalCount: number,
-) {
+function initMergedMesh(geometries: BufferGeometry[], totalCount: number) {
   const geometryCount = totalCount;
   const matrix = new Matrix4();
 
