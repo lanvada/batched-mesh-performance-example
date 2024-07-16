@@ -80,6 +80,7 @@ function initBatchedMesh(geometries: BufferGeometry[], totalCount: number) {
 
   // disable full-object frustum culling since all of the objects can be dynamic.
   mesh.frustumCulled = false;
+  mesh.sortObjects = false;
 
   const geometryIds = [
     mesh.addGeometry(geometries[0]),
